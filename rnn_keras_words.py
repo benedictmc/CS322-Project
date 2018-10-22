@@ -21,6 +21,7 @@ class Predict_Lyrics():
                 "a mournin' and a gnashin' of teeth It is",
                 " a— when it comes to my sound which is t"]
 
+
     def __init__(self):
         ## Opens lyrics text file and loads it into a string
         self.data = open(Predict_Lyrics.FILENAME, encoding='utf-8').read()
@@ -49,14 +50,11 @@ class Predict_Lyrics():
         print("There are {} unquie characters".format(len(self.unquie_tokens)))
 
     def create_feature_labels(self):
-
         ## Makes a 3D array of false booleans of length amount_of_squences x squence_length (40) x amount_of_unquie_chars 
         X = np.zeros((len(self.squences), Predict_Lyrics.SQUENCE_LENGTH, len(self.unquie_tokens)), dtype=np.bool)
         ## Makes a 2D array of false booleans of length amount_of_squences x amount_of_unquie_chars 
         y = np.zeros((len(self.squences), len(self.unquie_tokens)), dtype=np.bool)
-
         print("The shape of the X array is {}, and the shape of the y array is {}".format(str(X.shape), str(y.shape)))
-
         ## Interates through squences list 
         for idx_squence, squence in enumerate(self.squences):
             ## Interates through string invariant 
@@ -65,7 +63,6 @@ class Predict_Lyrics():
                 X[idx_squence, idx_char, self.char_index[char]] = 1
              ## Places a true variable in the [idx_squence, unquie_val_of_char[saved_char_of_squence]] 
             y[idx_squence, self.char_index[self.saved_chars[idx_squence]]] = 1
-
         return X, y
 
     def create_squences(self):
