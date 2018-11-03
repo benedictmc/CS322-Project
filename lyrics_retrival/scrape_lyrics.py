@@ -5,6 +5,8 @@ import os
 from itertools import chain
 import argparse
 import sys
+import compile_lyrics
+
 
 class ScapeLyrics():
     
@@ -21,28 +23,38 @@ class ScapeLyrics():
        'Accept-Encoding': 'none',
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
-
-
+        artist = 'the beatles'
+        artist_f = artist.replace(' ', '_')
         self.song_dict, self.url_list = {}, []
-        self.artist_id = self.get_artist_id()
+        self.artist_id = self.get_artist_id(artist)
 
-
-        if os.path.exists('kanye_url_list.json'):
-            with open('kanye_url_list.json') as f:
+        if os.path.exists(f'meta/{artist_f}_url_list.json'):
+            with open(f'meta/{artist_f}_url_list.json') as f:
                 self.url_list = json.load(f)
         else:
             self.get_url_list(self.artist_id)
             # Dumping url_list dictionary to JSON file
-            with open('kanye_url_list.json', 'w') as f:
+            with open(f'meta/{artist_f}_url_list.json', 'w') as f:
                 json.dump(self.url_list, f)
 
         self.url_list = list(chain.from_iterable(self.url_list))
+        if os.path.exists(f'meta/{artist_f}_songs.json'):
+            print('Song JSON does exists. Loading file into memory...')
+            with open(f'meta/{artist_f}_songs.json') as f:
+                self.song_json = json.load(f)
+        else:
+            print('Song JSON does not exists calling getter on url list...')
+            # Calls the get song lyrics method
+            self.make_request(self.url_list)
+            # Dumping song dictionary to JSON file
+            print('Done. Saving JSON file...')
+            with open(f'meta/{artist_f}_songs.json', 'w') as f:
+                json.dump(self.song_dict, f)
+                self.song_json = self.song_dict
 
-        # Calls the get song lyrics method
-        self.make_request(self.url_list)
-        # Dumping song dictionary to JSON file
-        with open('kanye_songs.json', 'w') as f:
-            json.dump(self.song_dict, f)
+        compile_lyrics.CompileLyrics(f'meta/{artist_f}_songs.json', artist)
+
+
 
     def get_url_list(self, id, page = 1):
         print("Getting urls of artist song for page " + str(page))
@@ -60,8 +72,11 @@ class ScapeLyrics():
             self.get_url_list(id, page=json_res['response']['next_page'])
 
     def get_artist_id(self, artist = 'Kanye%20West'):
+
+        artist = artist.replace(' ', '%20')
         print("Getting artist id ..")
         search_url = 'https://api.genius.com/search?q={}'.format(artist)
+        print(search_url)
         search_page = urllib.request.Request(search_url, None, ScapeLyrics.HEADER)
         search_html = urllib.request.urlopen(search_page).read().decode('utf-8')
         json_res = json.loads(search_html)

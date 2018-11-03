@@ -1,10 +1,12 @@
 import json
 
+class CompileLyrics():
+    def __init__(self, filename, artist):
+        print('Loading preprocess script...')
+        print(f'Opening file {filename} ...')
 
-class Preprocess():
-    def __init__(self):
         song_list = []
-        with open('kanye_songs.json') as f:
+        with open(filename) as f:
             self.data = json.load(f)
 
         for song_key in list(self.data):
@@ -13,12 +15,11 @@ class Preprocess():
             remove_tag = [line for line in line_list if '[' not in line]
             remove_empty = [line for line in remove_tag if '' != line]
             song_list.append(' '.join(remove_empty))
-        print(' '.join(song_list))
+        print(f'Done now saving to {filename} ...')
 
-        
 
-        text_file = open("kanye_songs.txt", "w",  encoding="utf-8")
+        text_file = open(f"lyrics/{artist}_songs.txt", "w",  encoding="utf-8")
         text_file.write(' '.join(song_list))
         text_file.close()
+        print(f'Finished.')
 
-x = Preprocess()
