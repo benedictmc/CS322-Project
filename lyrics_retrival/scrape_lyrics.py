@@ -16,14 +16,13 @@ class ScapeLyrics():
                 'Host': 'api.genius.com',
                 'Authorization': 'Bearer 6REGZk9IyfkJOrmZddVX39nMlSXYRm6a087_b9pYz0GA30nj7V52Tdxc2WfpDSw1' }
 
-    def __init__(self):
+    def __init__(self, artist):
         self.hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
        'Accept-Encoding': 'none',
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
-        artist = 'the beatles'
         artist_f = artist.replace(' ', '_')
         self.song_dict, self.url_list = {}, []
         self.artist_id = self.get_artist_id(artist)
@@ -105,4 +104,4 @@ class ScapeLyrics():
 # parser = argparse.ArgumentParser(description='Scrapes Music Lyrics from artist from genuis.com.')
 # parser.add_argument('--bearer_key', nargs='?', help='Add your Bearer authentication key. ')
 
-x = ScapeLyrics()
+x = ScapeLyrics('the beatles')

@@ -17,7 +17,7 @@ class CompileLyrics():
             song_list.append(' '.join(remove_empty))
         print(f'Done now saving to {filename} ...')
 
-
+        artist = artist.replace(' ', '_')
         text_file = open(f"lyrics/{artist}_songs.txt", "w",  encoding="utf-8")
         text_file.write(' '.join(song_list))
         text_file.close()

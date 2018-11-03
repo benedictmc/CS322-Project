@@ -3,13 +3,13 @@ import numpy as np
 from glob import glob
 import pickle
 from keras.models import Sequential, load_model
-from keras.layers import CuDNNLSTM as LSTM
+from keras.layers import CuDNNLSTM
 from keras.layers.core import Dense, Activation, Dropout
 from keras.optimizers import RMSprop
 import heapq
 
 class Predict_Lyrics():
-    FILENAME = 'kanye_songs.txt'
+    FILENAME = 'lyrics_retrival/lyrics/the_beatles_songs.txt'
     EPOCHS = 60  
     BATCH_SIZE = 128 
     MAX_LEN = 20 #Vector size
@@ -32,7 +32,7 @@ class Predict_Lyrics():
         self.X, self.y = self.create_feature_labels()
         self.preform_ml()
         # self.use_model()
-        print(self.predict_completions("Hello my name is Ben and I like cheese a", 5))
+        # print(self.predict_completions("Hello my name is Ben and I like cheese a", 5))
         # for q in Predict_Lyrics.QUOTES:
         #     seq = q[:40].lower()
         #     print(seq)
@@ -81,9 +81,9 @@ class Predict_Lyrics():
         ## Builds Keras LSTM model
         model = Sequential()
         ## Makes LSTM layer to correspond with length of squences x amount_unquie_chars
-        model.add(LSTM(512, return_sequences=True, input_shape=(Predict_Lyrics.SQUENCE_LENGTH, len(self.unquie_tokens))))
+        model.add(CuDNNLSTM(512, return_sequences=True, input_shape=(Predict_Lyrics.SQUENCE_LENGTH, len(self.unquie_tokens))))
         model.add(Dropout(0.2))
-        model.add(LSTM(265, return_sequences=False))
+        model.add(CuDNNLSTM(265, return_sequences=False))
         model.add(Dropout(0.2))
         ## A Dence layer to pad out by amount_unquie_chars
         model.add(Dense(len(self.unquie_tokens)))
