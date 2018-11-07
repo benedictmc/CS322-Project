@@ -9,7 +9,8 @@ First you must have python 3 installed and flask installed ```python -m pip inst
   2. App should be running on localhost:5000
 
 ## How to run angular application
-To develop on the angular application you must first have npm and node installed. Then install the angular cli ```npm install -g @angular/cli```
+To develop on the angular application you must first have npm and node installed. Then install the angular cli 
+  - ```npm install -g @angular/cli```
 
   1. Change directory to the angular application ```cd angular_app\```
   2. Run the application ```ng serve```
