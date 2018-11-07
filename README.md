@@ -13,8 +13,9 @@ To develop on the angular application you must first have npm and node installed
   - ```npm install -g @angular/cli```
 
   1. Change directory to the angular application ```cd angular_app\```
-  2. Run the application ```ng serve```
-  3. Application should be running on localhost:4200
+  2. Run npm install (May take a few minutes) ```npm install```
+  3. Run the application ```ng serve```
+  4. Application should be running on localhost:4200
 
 ## How to run lyrics retrival
 The lyric retrival application will download any given artist library of song lyrics. This application uses the genuis.com api to get lyrics. To run:
