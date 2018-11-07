@@ -17,15 +17,16 @@ def get_artists_list():
         artists_list = driver.get_available_artists()
         return jsonify(artists_list)
 
-@app.route('/API/samples/<str:id>')
-def get_artists_list(id):
-        if id == 'the_beatles':
-                samples = ['I am he as you are he as you are me and we are all together','A crowd of people stood and stared Theyd seen his face ', 'When I think of love as something new']
-        if id == 'kanye':
-                samples = ['So your Duncan Hines is irrelevant, woo ','''Don't sell me apartment, I'll move in the lobby''', '''' I wanna wake up with you in my... Beautiful mornin'''']
-        else:
-                samples = f'Error artist with {id} not found.'
-        return jsonify(samples)      
+# @app.route('/API/samples/<id>')
+# def get_artists_list(id):
+#         samples = []
+#         # if id == 'the_beatles':
+#         #         samples = ['I am he as you are he as you are me and we are all together','A crowd of people stood and stared Theyd seen his face ', 'When I think of love as something new']
+#         # if id == 'kanye':
+#         #         samples = ['So your Duncan Hines is irrelevant, woo ','''Don't sell me apartment, I'll move in the lobby''', '''' I wanna wake up with you in my... Beautiful mornin'''']
+#         # else:
+#         #         samples = f'Error artist with {id} not found.'
+#         return jsonify(samples)      
 
 if __name__ == "__main__":
         app.run()
