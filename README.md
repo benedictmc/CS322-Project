@@ -3,7 +3,7 @@ Project repository for Maynooth final year module CS322, Music Programming. The 
 
 
 ## How to run
-First you must have python 3 installed and flask installed ```python -m pip install flask```
+First you must have python 3 installed and flask installed ```python -m pip install flask```  and ```pip install -U flask-cors```
 
   1. Run flask application ```python app.py```
   2. App should be running on localhost:5000
