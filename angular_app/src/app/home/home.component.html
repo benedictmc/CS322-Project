@@ -1,30 +1,58 @@
+<!-- <body> -->
 <div class="border">
 <p> Pick An Artist: </p>
   <form>
       <mat-radio-group>
-          <mat-radio-button class="example-radio-button" *ngFor="let item of list" [value]="item">
-              {{item}}
+          <mat-radio-button class="example-radio-button" *ngFor="let artist of list" [value]="artist" (click)= "artistFocus = artist">
+              {{artist}}
           </mat-radio-button>
         </mat-radio-group>
       <br>
   </form>
 </div>
 <br>
-<!-- 
-<mat-tab-group>
-  <div *ngFor="let item of list">
-      <input type="checkbox">{{item}}<br>
-      <mat-tab label="First">{{item}}</mat-tab>
-  </div>
-</mat-tab-group> -->
-<br>
 <br>
 
-<mat-tab-group>
-    <mat-tab label="Song 1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</mat-tab>
-    <mat-tab label="Song 2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</mat-tab>
-    <mat-tab label="Song 3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</mat-tab>
-  </mat-tab-group>
+<div *ngIf="artistFocus == '';else artist_picked">Please pick an artist!</div>
+<div *ngIf="artistFocus == 'Kanye West'">
+  <mat-tab-group>
+    <mat-tab label="Song 1"> 
+        I feel blessed <br>        
+        Way up, I feel blessed<br>  
+        Way up, I feel blessed</mat-tab>
+    <mat-tab label="Song 2">
+      I hate the new Kanye, the bad mood Kanye<br>  
+      The always rude Kanye, spaz in the news Kanye</mat-tab>
+    <mat-tab label="Song 3">
+      When was the last time I remembered a birthday?<br>  
+      When was the last time I wasn't in a hurry?</mat-tab>
+</mat-tab-group></div>
+
+<div *ngIf="artistFocus == 'The Beatles'">
+    <mat-tab-group>
+      <mat-tab label="Song 1">
+           It Won't Be Long<br>  
+          All I've Got To Do<br>  
+          All My Loving<br>  
+          Don't Bother Me</mat-tab>
+      <mat-tab label="Song 2">
+          Within You Without You<br>  
+          When I'm Sixty Four<br>  
+          Lovely Rita
+      </mat-tab>
+      <mat-tab label="Song 3">
+          You Know What To Do<br>  
+          No Reply<br>  
+          Mr. Moonlight<br>  
+          Leave My Kitten Alone<br>  
+          Eight Days A Week
+      </mat-tab>
+  </mat-tab-group></div>
+
+
+
+
+
 <!-- creating strings for selecting -->
 <!-- <div class="btn-group">
   <button>Str1</button>
@@ -38,25 +66,21 @@
 
 <!-- Generate Button -->
 <div ng-if="results" style="text-align: center;">
-  <button mat-button color="primary">Generate</button>
+  <button mat-button color="primary" (click) = "postLyrics()"  (click)="results = true">Generate</button>
 </div>
 <br>
 <br>
-
-<!-- Results textarea
-<p>Results:</p>
-<textarea id="text"></textarea>
+<!-- </body> -->
 
 
-<h4>Angular application starts here: </h4>
+<div *ngIf="!results;else other_content"></div>
+
+<ng-template #other_content>
+  <p>Results:</p>
+  <textarea id="text"></textarea>
+</ng-template>
+<!-- <h4>Angular application starts here: </h4>
 <h1>Here is the artist list: </h1>
 <li *ngFor="let item of list">
   {{i}}{{item}} <span *ngIf="isFirst">default</span>
 </li> -->
-
-
-  <!-- <span class="done">
-    <button mat-fab>
-      <mat-icon>check circle</mat-icon>
-    </button>
-  </span> -->

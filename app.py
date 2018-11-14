@@ -17,6 +17,15 @@ def get_artists_list():
         artists_list = driver.get_available_artists()
         return jsonify(artists_list)
 
+# TODO Need to finsihed
+@app.route('/API/post-artists', methods=['POST'])
+def post_generated_lyrics():
+        print(request.data)
+        generated_lyrics = ['this', 'is' ,'sample' ,'generated', 'lyrics']
+        return jsonify(generated_lyrics)
+
+
+
 # @app.route('/API/samples/<id>')
 # def get_artists_list(id):
 #         samples = []

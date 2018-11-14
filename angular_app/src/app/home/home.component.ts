@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-import { GoogleModule } from '../google.module'
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +11,10 @@ import { GoogleModule } from '../google.module'
 })
 export class HomeComponent implements OnInit {
   list: string[]
+
   results: Boolean = false
+  artistFocus: string = ''
+
   
   constructor(private http: HttpClient) { }
 
@@ -21,13 +24,22 @@ export class HomeComponent implements OnInit {
       this.list = data
       console.log(this.list)      
     })
-
     this.getSamples('kanye').subscribe(data=>{
       console.log("Samples retruned are: ")      
       console.log(data)      
     })
   }
-    
+  // TODO Need to finish this method
+  postLyrics(artist, body) {
+    body = "hello"
+    let url = 'http://localhost:5000/API/post-artists'
+    return this.http.post(url, body).pipe(
+      tap(_ => _),
+      catchError(this.handleError('getArtists', []))
+    );
+    console.log("Posting lyrics....")
+  }
+
   getArtists (): Observable<any[]> {
     let url = 'http://localhost:5000/API/artists'
     return this.http.get<any[]>(url)
