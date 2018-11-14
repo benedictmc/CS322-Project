@@ -8,6 +8,6 @@ class AppDriver():
 
     def get_available_artists(self):
         list_ = os.listdir('lyrics_retrival\lyrics')
-        artist_list = [item.replace('_songs.txt', '') for item in list_]
+        artist_list = ['Kanye West', 'The Beatles']
         return artist_list
-
+    

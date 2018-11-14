@@ -7,7 +7,18 @@ body {
      border-radius: 5px;
      text-align:center;
     }
-    
+    .example-radio-group {
+        display: inline-flex;
+        flex-direction: column;
+      }
+      
+      .example-radio-button {
+        margin: 5px;
+      }
+      
+      .example-selected-value {
+        margin: 15px 0;
+      }
     .btn-group button {
         background-color: #D7D6D6; 
         border: 1px solid green; 

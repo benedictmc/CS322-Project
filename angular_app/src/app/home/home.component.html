@@ -1,13 +1,12 @@
 <div class="border">
 <p> Pick An Artist: </p>
- <form>
-    <div *ngFor="let item of list">
-        <mat-radio-group>
-            <mat-radio-button value="{{item}}">{{item}}</mat-radio-button>
-            <br>
-          </mat-radio-group>
-    <br>
-    </div>
+  <form>
+      <mat-radio-group>
+          <mat-radio-button class="example-radio-button" *ngFor="let item of list" [value]="item">
+              {{item}}
+          </mat-radio-button>
+        </mat-radio-group>
+      <br>
   </form>
 </div>
 <br>
