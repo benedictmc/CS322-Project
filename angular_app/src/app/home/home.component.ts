@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-
+import { GoogleModule } from '../google.module'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +11,8 @@ import { Observable, of } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   list: string[]
-
+  results: Boolean = false
+  
   constructor(private http: HttpClient) { }
 
   ngOnInit() {

@@ -2,25 +2,49 @@
 <p> Pick An Artist: </p>
  <form>
     <div *ngFor="let item of list">
-        <input type="checkbox">{{item}}<br>
+        <mat-radio-group>
+            <mat-radio-button value="{{item}}">{{item}}</mat-radio-button>
+            <br>
+          </mat-radio-group>
+    <br>
     </div>
-</form>
+  </form>
 </div>
 <br>
+<!-- 
+<mat-tab-group>
+  <div *ngFor="let item of list">
+      <input type="checkbox">{{item}}<br>
+      <mat-tab label="First">{{item}}</mat-tab>
+  </div>
+</mat-tab-group> -->
+<br>
+<br>
 
+<mat-tab-group>
+    <mat-tab label="Song 1"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</mat-tab>
+    <mat-tab label="Song 2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</mat-tab>
+    <mat-tab label="Song 3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</mat-tab>
+  </mat-tab-group>
 <!-- creating strings for selecting -->
-<div class="btn-group">
+<!-- <div class="btn-group">
   <button>Str1</button>
   <button>Str2</button>
   <button>Str3</button>
-</div>
+</div> -->
 <br>
+
+<br>
+
 
 <!-- Generate Button -->
-<button id="GB"> Generate </button>
+<div ng-if="results" style="text-align: center;">
+  <button mat-button color="primary">Generate</button>
+</div>
+<br>
 <br>
 
-<!-- Results textarea -->
+<!-- Results textarea
 <p>Results:</p>
 <textarea id="text"></textarea>
 
@@ -29,4 +53,11 @@
 <h1>Here is the artist list: </h1>
 <li *ngFor="let item of list">
   {{i}}{{item}} <span *ngIf="isFirst">default</span>
-</li>
+</li> -->
+
+
+  <!-- <span class="done">
+    <button mat-fab>
+      <mat-icon>check circle</mat-icon>
+    </button>
+  </span> -->
