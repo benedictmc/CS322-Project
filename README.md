@@ -14,6 +14,8 @@ To develop on the angular application you must first have npm and node installed
 
   1. Change directory to the angular application ```cd angular_app\```
   2. Run npm install (May take a few minutes) ```npm install```
+  3. Install google material ```npm install --save @angular/material @angular/cdk @angular/animations
+```
   3. Run the application ```npm run ng serve```
   4. Application should be running on localhost:4200
 
