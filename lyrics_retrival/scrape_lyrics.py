@@ -104,4 +104,4 @@ class ScapeLyrics():
 # parser = argparse.ArgumentParser(description='Scrapes Music Lyrics from artist from genuis.com.')
 # parser.add_argument('--bearer_key', nargs='?', help='Add your Bearer authentication key. ')
 
-x = ScapeLyrics('the beatles')
+x = ScapeLyrics('adele')
