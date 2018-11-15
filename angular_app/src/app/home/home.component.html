@@ -1,0 +1,86 @@
+<!-- <body> -->
+<div class="border">
+<p> Pick An Artist: </p>
+  <form>
+      <mat-radio-group>
+          <mat-radio-button class="example-radio-button" *ngFor="let artist of list" [value]="artist" (click)= "artistFocus = artist">
+              {{artist}}
+          </mat-radio-button>
+        </mat-radio-group>
+      <br>
+  </form>
+</div>
+<br>
+<br>
+
+<div *ngIf="artistFocus == '';else artist_picked">Please pick an artist!</div>
+<div *ngIf="artistFocus == 'Kanye West'">
+  <mat-tab-group>
+    <mat-tab label="Song 1"> 
+        I feel blessed <br>        
+        Way up, I feel blessed<br>  
+        Way up, I feel blessed</mat-tab>
+    <mat-tab label="Song 2">
+      I hate the new Kanye, the bad mood Kanye<br>  
+      The always rude Kanye, spaz in the news Kanye</mat-tab>
+    <mat-tab label="Song 3">
+      When was the last time I remembered a birthday?<br>  
+      When was the last time I wasn't in a hurry?</mat-tab>
+</mat-tab-group></div>
+
+<div *ngIf="artistFocus == 'The Beatles'">
+    <mat-tab-group>
+      <mat-tab label="Song 1">
+           It Won't Be Long<br>  
+          All I've Got To Do<br>  
+          All My Loving<br>  
+          Don't Bother Me</mat-tab>
+      <mat-tab label="Song 2">
+          Within You Without You<br>  
+          When I'm Sixty Four<br>  
+          Lovely Rita
+      </mat-tab>
+      <mat-tab label="Song 3">
+          You Know What To Do<br>  
+          No Reply<br>  
+          Mr. Moonlight<br>  
+          Leave My Kitten Alone<br>  
+          Eight Days A Week
+      </mat-tab>
+  </mat-tab-group></div>
+
+
+
+
+
+<!-- creating strings for selecting -->
+<!-- <div class="btn-group">
+  <button>Str1</button>
+  <button>Str2</button>
+  <button>Str3</button>
+</div> -->
+<br>
+
+<br>
+
+
+<!-- Generate Button -->
+<div ng-if="results" style="text-align: center;">
+  <button mat-button color="primary" (click) = "postLyrics()"  (click)="results = true">Generate</button>
+</div>
+<br>
+<br>
+<!-- </body> -->
+
+
+<div *ngIf="!results;else other_content"></div>
+
+<ng-template #other_content>
+  <p>Results:</p>
+  <textarea id="text"></textarea>
+</ng-template>
+<!-- <h4>Angular application starts here: </h4>
+<h1>Here is the artist list: </h1>
+<li *ngFor="let item of list">
+  {{i}}{{item}} <span *ngIf="isFirst">default</span>
+</li> -->

@@ -1,0 +1,60 @@
+body {
+    background-color: coral;
+    }
+    div.border {
+    border-style: solid;
+    border-width: 2.5px;
+     border-radius: 5px;
+     text-align:center;
+    }
+    .example-radio-group {
+        display: inline-flex;
+        flex-direction: column;
+      }
+      
+    .example-radio-button {
+    margin: 5px;
+    }
+    
+    .example-selected-value {
+    margin: 15px 0;
+    }
+
+    
+    .btn-group button {
+        background-color: #D7D6D6; 
+        border: 1px solid green; 
+        color: white;
+        padding: 10px 24px; 
+        cursor: pointer;
+        float: left; 
+         padding: 15px 735px;
+    }
+    
+    .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+        
+    }
+    
+    .btn-group button:not(:last-child) {
+        border-right: none; 
+        
+    }
+    
+    .btn-group button:hover {
+        background-color: red;
+    }
+    
+    
+    #GB{
+    color: white;
+    border-width: 2.5px;
+     border-radius: 5px;
+     text-align:center;
+     padding: 15px 720px;
+    }
+    #text{
+     padding: 15px 660px;
+    }
