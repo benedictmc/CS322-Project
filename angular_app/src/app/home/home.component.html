@@ -14,23 +14,22 @@
 <br>
 
 <div *ngIf="artistFocus == '';else artist_picked">Please pick an artist!</div>
+
 <div *ngIf="artistFocus == 'Kanye West'">
-  <mat-tab-group>
-    <mat-tab label="Song 1"> 
-        I feel blessed <br>        
-        Way up, I feel blessed<br>  
-        Way up, I feel blessed</mat-tab>
-    <mat-tab label="Song 2">
-      I hate the new Kanye, the bad mood Kanye<br>  
-      The always rude Kanye, spaz in the news Kanye</mat-tab>
-    <mat-tab label="Song 3">
-      When was the last time I remembered a birthday?<br>  
-      When was the last time I wasn't in a hurry?</mat-tab>
-</mat-tab-group></div>
+  
+  <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
+    <mat-tab *ngFor="let sample of kanyeSamples;" label="Song">{{sample}}</mat-tab>
+  </mat-tab-group>
+</div>
 
 <div *ngIf="artistFocus == 'The Beatles'">
-    <mat-tab-group>
-      <mat-tab label="Song 1">
+<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
+    <mat-tab *ngFor="let sample of beatlesSamples;" label="Song">{{sample}}</mat-tab>
+  </mat-tab-group>
+</div>
+<!-- <div *ngIf="artistFocus == 'The Beatles'">
+    <mat-tab-group id="GroupTable">
+      <mat-tab label="Song 1" id="Song1">
            It Won't Be Long<br>  
           All I've Got To Do<br>  
           All My Loving<br>  
@@ -47,7 +46,7 @@
           Leave My Kitten Alone<br>  
           Eight Days A Week
       </mat-tab>
-  </mat-tab-group></div>
+  </mat-tab-group></div> -->
 
 
 
