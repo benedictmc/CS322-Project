@@ -40,15 +40,23 @@ export class HomeComponent implements OnInit {
   postLyrics() {
     let sample = this.sampleFocus
     let artist = this.artistFocus
-
+    console.log('Generate button clicked with artist and sample', this.sampleFocus, sample)
+    // {
+    //   "artist" : artist,
+    //   "sample" : sample
+    // }
     let url = 'http://localhost:5000/API/post-artists'
-    return this.http.post(url, {
-      "artist" : this.artistFocus,
-      "sample" : this.sampleFocus
-      }).pipe(
-      tap(_ => _),
-      catchError(this.handleError('getArtists', []))
-    );
+    this.http.post('http://localhost:5000/API/post-artists', {
+        "artist" : artist,
+        "sample" : sample
+      }).subscribe(
+      data => {
+          console.log("POST Request is successful ", data);
+      },
+      error => {
+          console.log("Error", error);
+      }
+    );     
     console.log("Posting lyrics....")
   }
 
