@@ -18,7 +18,7 @@ def post_artists():
         print('Post artists triggered...')
         if request.method == 'POST':  
                 json_payload = request.get_json()
-        print(json_payload.keys())
+        print(json_payload)
         return 'works'
 
 if __name__ == "__main__":
