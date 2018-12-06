@@ -32,7 +32,9 @@ class Predict_Lyrics():
         self.X, self.y = self.create_feature_labels()
         self.preform_ml()
         # self.use_model()
-        # print(self.predict_completions("Hello my name is Ben and I like cheese a", 5))
+        # string = "One thing I can tell you is you got to be free Come"
+
+        print(self.predict_completions(string[:40], 5))
         # for q in Predict_Lyrics.QUOTES:
         #     seq = q[:40].lower()
         #     print(seq)
@@ -92,15 +94,15 @@ class Predict_Lyrics():
 
         optimizer = RMSprop(lr=0.01)
         model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
-        history = model.fit(self.X, self.y, validation_split=0.05, batch_size=128, epochs=20, shuffle=True).history
+        history = model.fit(self.X, self.y, validation_split=0.05, batch_size=128, epochs=60, shuffle=True).history
 
-        model.save('first_model.h5')
-        pickle.dump(history, open("history.p", "wb"))
+        model.save('models/the_beatle_60.h5')
+        pickle.dump(history, open("models/the_beatle_60.p", "wb"))
 
 
 
     def use_model(self):
-        self.model = load_model("first_model.h5") 
+        self.model = load_model("models/the_beatles.h5") 
 
     def prepare_input(self, text):
         x = np.zeros((1, Predict_Lyrics.SQUENCE_LENGTH, len(self.unquie_tokens)))
@@ -117,7 +119,6 @@ class Predict_Lyrics():
 
     def predict_completion(self, text):
         original_text = text
-        generated = text
         completion = ''
         while True:
             x = self.prepare_input(text)
@@ -135,6 +136,7 @@ class Predict_Lyrics():
         x = self.prepare_input(text)
         preds = self.model.predict(x, verbose=0)[0]
         next_indices = self.sample(preds, n)
+        print([self.index_char[idx] + self.predict_completion(text[1:] + self.index_char[idx]) for idx in next_indices])
         return [self.index_char[idx] + self.predict_completion(text[1:] + self.index_char[idx]) for idx in next_indices]
 
 x = Predict_Lyrics()
