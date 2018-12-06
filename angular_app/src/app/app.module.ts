@@ -8,9 +8,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
+import { SplashComponent } from './splash/splash.component';
 
 const appRoutes: Routes = [
+  { path: '', component: SplashComponent },
   { path: 'home', component: HomeComponent },
+
   ];
 
 
@@ -18,7 +21,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
