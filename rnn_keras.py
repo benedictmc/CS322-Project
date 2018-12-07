@@ -25,14 +25,16 @@ class Predict_Lyrics():
         ## Opens lyrics text file and loads it into a string
         self.data = open(Predict_Lyrics.FILENAME, encoding='utf-8').read()
         self.word_string = self.data  
+        # if True : # for running on words
+        #     self.word_string = self.data.split()
         ## Creates a list of unquie characters in the lyrics string
         self.unquie_tokens = sorted(list(set(self.data)))
         self.preprocess_data()
         self.squences, self.saved_chars = self.create_squences()
         self.X, self.y = self.create_feature_labels()
         self.preform_ml()
-        # self.use_model()
-        # string = "One thing I can tell you is you got to be free Come"
+        self.use_model()
+        string = "One thing I can tell you is you got to be free Come"
 
         print(self.predict_completions(string[:40], 5))
         # for q in Predict_Lyrics.QUOTES:
@@ -96,13 +98,13 @@ class Predict_Lyrics():
         model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
         history = model.fit(self.X, self.y, validation_split=0.05, batch_size=128, epochs=60, shuffle=True).history
 
-        model.save('models/the_beatle_60.h5')
-        pickle.dump(history, open("models/the_beatle_60.p", "wb"))
+        model.save('models/the_beatle_words_10.h5')
+        pickle.dump(history, open("models/the_beatle_words_10.p", "wb"))
 
 
 
     def use_model(self):
-        self.model = load_model("models/the_beatles.h5") 
+        self.model = load_model("models/the_beatle_words_10.h5") 
 
     def prepare_input(self, text):
         x = np.zeros((1, Predict_Lyrics.SQUENCE_LENGTH, len(self.unquie_tokens)))

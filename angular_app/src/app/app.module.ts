@@ -9,11 +9,13 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { SplashComponent } from './splash/splash.component';
+import { AboutComponent } from './about/about.component';
+import { ParallaxModule, ParallaxConfig } from 'ngx-parallax';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
-  { path: 'home', component: HomeComponent },
-
+  { path: 'generate', component: HomeComponent },
+  { path: 'about', component: AboutComponent }
   ];
 
 
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     NavComponent,
-    SplashComponent
+    SplashComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ const appRoutes: Routes = [
       appRoutes
     ),
     HttpClientModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule,
+    ParallaxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
