@@ -1,6 +1,6 @@
 
 from gtts import gTTS
-from pygame import mixer
+import pygame 
 import os 
 import pygame.mixer
 
@@ -10,17 +10,26 @@ import pygame.mixer
 # tts.save("adele.mp3")
 
 
-background = 'adele-background.mp3'
-backtrack = 'adele.mp3'
+
+#### Pygame code ####
+
+# background = 'adele-background.mp3'
+# backtrack = 'adele.mp3'
 
 
-for filename in os.listdir("/Users/muznaalrasheed/Desktop/CS322/CS322-Project"):
-    if filename.endswith(".mp3"):
-        file = filename
+# for filename in os.listdir("/Users/muznaalrasheed/Desktop/CS322/CS322-Project"):
+#     if filename.endswith(".mp3"):
+#         file = filename
 
-pygame.init()
-pygame.mixer.music.play()
-while pygame.mixer.music.get_busy(): 
-    pygame.time.Clock().tick(30000)
 
-        
+# pygame.init()
+# pygame.mixer.init()
+# pygame.mixer.music.load(file)
+# pygame.mixer.music.play()
+# while pygame.mixer.music.get_busy(): 
+#     pygame.time.Clock().tick(30000)
+
+import playsound
+
+file = 'adele-background.mp3'
+playsound.playsound(file, True)
