@@ -1,6 +1,6 @@
 <!-- <body> -->
 <div class="border">
-<p> Pick An Artist: </p>
+<h3> Pick An Artist: </h3>
   <form>
       <mat-radio-group>
           <mat-radio-button class="example-radio-button" *ngFor="let artist of list" [value]="artist" (click)= "artistFocus = artist">
@@ -14,7 +14,7 @@
 <br>
 
 <div *ngIf="artistFocus == '';else artist_picked"><h4>Please pick an artist!</h4></div>
-
+<!-- 
 <div *ngIf="artistFocus == 'Kanye West'">
   
   <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
@@ -26,7 +26,7 @@
 <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
     <mat-tab *ngFor="let sample of beatlesSamples;" label="Song">{{sample}}</mat-tab>
   </mat-tab-group>
-</div>
+</div> -->
 
 
 <mat-tab-group>
@@ -42,44 +42,19 @@
     </form>
   </mat-tab>
 </mat-tab-group>
-<!-- <div *ngIf="artistFocus == 'The Beatles'">
-    <mat-tab-group id="GroupTable">
-      <mat-tab label="Song 1" id="Song1">
-           It Won't Be Long<br>  
-          All I've Got To Do<br>  
-          All My Loving<br>  
-          Don't Bother Me</mat-tab>
-      <mat-tab label="Song 2">
-          Within You Without You<br>  
-          When I'm Sixty Four<br>  
-          Lovely Rita
-      </mat-tab>
-      <mat-tab label="Song 3">
-          You Know What To Do<br>  
-          No Reply<br>  
-          Mr. Moonlight<br>  
-          Leave My Kitten Alone<br>  
-          Eight Days A Week
-      </mat-tab>
-  </mat-tab-group></div> -->
 
 
 
-
-
-<!-- creating strings for selecting -->
-<!-- <div class="btn-group">
-  <button>Str1</button>
-  <button>Str2</button>
-  <button>Str3</button>
-</div> -->
+<div *ngIf="loaded == 'loading'">
+  <div class="progress">
+    <mat-spinner style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+  </div>
+</div>
 <br>
-
 <br>
-
 
 <!-- Generate Button -->
-<div ng-if="results" style="text-align: center;">
+<div *ngIf="artistFocus != ''" style="text-align: center;">
   <button mat-button color="primary" (click) = "postLyrics()"  (click)="results = true">Generate</button>
 </div>
 <br>
@@ -87,12 +62,11 @@
 <!-- </body> -->
 
 
-<div *ngIf="!results;else other_content"></div>
+<div *ngIf="loaded == 'done'">
+  <h1>Results:</h1>
+  <h4>{{current_data}}</h4>
+</div>
 
-<ng-template #other_content>
-  <p>Results:</p>
-  <textarea id="text"></textarea>
-</ng-template>
 <!-- <h4>Angular application starts here: </h4>
 <h1>Here is the artist list: </h1>
 <li *ngFor="let item of list">

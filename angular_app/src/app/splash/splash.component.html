@@ -11,9 +11,11 @@
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-4">Music Lyric Generator</h1>
-    <p class="lead">Create new and unquie song lyrics based on your favorite artists. Made with textgenrnn and keras as a part of CS322 Maynooth University</p>
+    <p class="lead">Create new and unquie song lyrics based on your favorite artists. Made with textgenrnn and keras as a part of CS322 Maynooth University
+      Music Programming Module
+    </p>
     <hr class="my-4">
-    <p>Utilises a recurrent neural network to and trains on 100000+ samples of a artists corpus of lyrics.</p>
+    <p>Utilises a recurrent neural network to and trains on 100000+ samples of an artists corpus of lyrics.</p>
   </div>
 </div>
 </div>
@@ -24,15 +26,15 @@
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-title>Choose Artist</mat-card-title>
           <mat-card-subtitle>Dog Breed</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+            Choose from a catalog of pre train artists models to generate lyrics for. 
+            Theses have been selected to showcase a broad range of lyrical structures and music genres.
+
           </p>
         </mat-card-content>
         <mat-card-actions>
@@ -45,15 +47,14 @@
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-title>Generate new lyrics</mat-card-title>
           <mat-card-subtitle>Dog Breed</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+          Jump and let the model generate a new set of lyrics. You have the option of automatically doing
+           this or you can have the choice of input a sample of lyrics to act as a seed for the generateion.
           </p>
         </mat-card-content>
         <mat-card-actions>
@@ -66,15 +67,13 @@
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-title>Play new music</mat-card-title>
           <mat-card-subtitle>Dog Breed</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+            Though Google's text to speech API we are able to bring the music to life. Click play and hear the new creation of lyrics that have been generated through the web interface.
           </p>
         </mat-card-content>
         <mat-card-actions>
@@ -88,7 +87,7 @@
 
 <hr/>
 <div class="example-button-row">
-  <button class="yo" mat-raised-button color="primary">Get Started</button>
+  <button class="yo" routerLink = "/generate" mat-raised-button color="primary">Get Started</button>
 </div>
 
 <hr/>

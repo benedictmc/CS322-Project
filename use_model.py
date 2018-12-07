@@ -1,5 +1,5 @@
 from textgenrnn import textgenrnn
-
+from keras import backend as K
 def generate():
     result = {}
     textgen = textgenrnn(weights_path='models/genrnn/colaboratory_weights.hdf5',
@@ -10,5 +10,7 @@ def generate():
 
     with open('textgenrnn_texts.txt', 'r') as f:
         result['result'] = f.read()
+    
+    K.clear_session()
     
     return result

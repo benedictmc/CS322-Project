@@ -22,7 +22,7 @@ def post_artists():
         sample = json_payload['sample']
         print(json_payload['artist'])
         print(json_payload['sample'])
-        return driver.predict_lyrics(artist, sample)
+        return jsonify(driver.predict_lyrics(artist, sample))
 
 if __name__ == "__main__":
         app.run()

@@ -1,4 +1,4 @@
-import {MatInputModule, MatCardModule, MatToolbarModule ,MatMenuModule, MatRadioModule, MatButtonModule, MatIconModule, MatTabsModule, MatButtonToggleModule} from '@angular/material';
+import {MatInputModule, MatProgressSpinnerModule, MatCardModule, MatToolbarModule ,MatMenuModule, MatRadioModule, MatButtonModule, MatIconModule, MatTabsModule, MatButtonToggleModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 
 @NgModule({
@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
     MatToolbarModule,
     MatInputModule,
     MatCardModule,
+    MatProgressSpinnerModule,
     MatMenuModule,
     MatIconModule,
     MatRadioModule,
@@ -15,6 +16,7 @@ import { NgModule } from '@angular/core';
     ],
   exports: [
     MatToolbarModule,
+    MatProgressSpinnerModule,
     MatIconModule,
     MatInputModule,
     MatCardModule,

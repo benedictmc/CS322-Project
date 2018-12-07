@@ -58,3 +58,9 @@ body {
     #text{
      padding: 15px 660px;
     }
+
+
+.progress{
+    height: 10%;
+    text-align: center
+}

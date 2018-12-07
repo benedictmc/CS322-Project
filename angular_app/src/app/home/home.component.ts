@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
   beatlesSamples: Array<string> = ["It Won't Be Long,All I've Got To Do,All My Loving,Don't Bother Me",
   "Within You Without You,When I'm Sixty Four,Lovely Rita",
   "You Know What To Do,No Reply, Mr. Moonlight,Leave My Kitten Alone,Eight Days A Week"]
+  loaded: string = '';
+  current_data: string;
 
   constructor(private http: HttpClient) { }
   
@@ -38,6 +40,7 @@ export class HomeComponent implements OnInit {
 
   // TODO Need to finish this method
   postLyrics() {
+    this.loaded = 'loading'
     let sample = this.sampleFocus
     let artist = this.artistFocus
     console.log('Generate button clicked with artist and sample', this.sampleFocus, sample)
@@ -52,6 +55,8 @@ export class HomeComponent implements OnInit {
       }).subscribe(
       data => {
           console.log("POST Request is successful ", data);
+          this.current_data = data['result']
+          this.loaded = 'done'
       },
       error => {
           console.log("Error", error);
