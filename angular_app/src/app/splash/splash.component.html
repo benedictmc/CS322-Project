@@ -1,52 +1,59 @@
-<!--The content below is only a placeholder and can be replaced.
-  {% comment %} <div ng-if="false" >
-    <img class="home-img" src="https://images.pexels.com/photos/1549708/pexels-photo-1549708.jpeg" >
-  </div>
-
-  <button type="button" class="btn btn-secondary btn-lg btn-block" routerLink="/generate">Get Started</button>
-    <img class="home-img" src="https://images.pexels.com/photos/1549708/pexels-photo-1549708.jpeg" >
-
-<div parallax [config]="{initialValue: -1000, ratio: .2}">
-    <img class="home-img" src="https://images.pexels.com/photos/1549708/pexels-photo-1549708.jpeg" >
-
-</div> {% endcomment %}
--->
-<!-- <div id = "bg">
-  <div class = "container12">
-    <div id="scene">
-      <ul>
-        <li class="layer" data-depth="0.60"><img src="../../assets/imgs/dog.jpeg"></li>
-        <li class="layer" data-depth="0.60"><img src="../../assets/imgs/dog1.jpg"></li>
-        <li class="layer" data-depth="1.00"><div class="wave paint depth-100"></div></li>
-      </ul>
-    </div>
-  </div>
-</div> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
-<div id= "bg" parallax [config]="{initialValue: -100, ratio: .1}">
-  <img id= "center_pic" src="../../assets/imgs/music-left.png">
+<div data-relative-input="true" id="scene">
+  <div data-depth="1.0"><img id= "center_pic" src="../../assets/imgs/music-left.png"></div>
 </div>
 <hr />
 
-<div class="row">
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">Hello, world!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
     </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
     </div>
   </div>
+</div>
+<!-- <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>  -->
+
+
+
+<!-- <div id="scene">
+  <div data-depth="0.2">My first Layer!</div>
+  <div data-depth="0.6">My second Layer!</div>
+</div> -->
+

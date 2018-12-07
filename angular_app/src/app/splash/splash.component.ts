@@ -14,6 +14,11 @@ export class SplashComponent implements OnInit, AfterContentInit {
   constructor() { }
 
   ngOnInit() {
+    // const scene = document.getElementById('scene')
+    // const parallaxInstance = new Parallax(scene, {
+    //   relativeInput: true,
+    //   hoverOnly: true
+    // })
   }
 
   ngAfterContentInit(){
@@ -23,5 +28,6 @@ export class SplashComponent implements OnInit, AfterContentInit {
       hoverOnly: true
     })
   }
+
 
 }

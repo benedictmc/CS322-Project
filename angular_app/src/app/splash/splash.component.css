@@ -32,7 +32,8 @@ body{
 
 
 #bg {
-  align-content: center;
+  width: auto;
+  width: 30rem;
 
 }
 
