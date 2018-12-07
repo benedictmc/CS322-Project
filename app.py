@@ -18,8 +18,11 @@ def post_artists():
         print('Post artists triggered...')
         if request.method == 'POST':  
                 json_payload = request.get_json()
-        print(json_payload)
-        return 'works'
+        artist = json_payload['artist']
+        sample = json_payload['sample']
+        print(json_payload['artist'])
+        print(json_payload['sample'])
+        return driver.predict_lyrics(artist, sample)
 
 if __name__ == "__main__":
         app.run()
