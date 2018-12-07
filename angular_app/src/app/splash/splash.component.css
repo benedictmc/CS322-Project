@@ -62,3 +62,17 @@ body{
   width: 20%;
   height: 100px;
 }
+
+
+.example-button-row button{
+  margin:auto;
+  display:block;
+  height: 100px;
+  width:350px;
+}
+.example-button-row a {
+  margin-right: 8px;
+  text-align: center;
+  height: 100px;
+  width:350px;
+}
