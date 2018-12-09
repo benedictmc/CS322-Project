@@ -1,6 +1,6 @@
 <!-- <body> -->
 <div class="border">
-<h3> Pick An Artist: </h3>
+<h2> Pick An Artist</h2>
   <form>
       <mat-radio-group>
           <mat-radio-button class="example-radio-button" *ngFor="let artist of list" [value]="artist" (click)= "artistFocus = artist">
@@ -13,24 +13,34 @@
 <br>
 <br>
 
-<div *ngIf="artistFocus == '';else artist_picked"><h4>Please pick an artist!</h4></div>
-<!-- 
+<!-- <div *ngIf="artistFocus == '';else artist_picked"><h4>Please pick an artist!</h4></div> -->
+<!--
 <div *ngIf="artistFocus == 'Kanye West'">
-  
-  <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
+
+  <mat-tab-group tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
     <mat-tab *ngFor="let sample of kanyeSamples;" label="Song">{{sample}}</mat-tab>
   </mat-tab-group>
 </div>
 
 <div *ngIf="artistFocus == 'The Beatles'">
-<mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
+<mat-tab-group tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
     <mat-tab *ngFor="let sample of beatlesSamples;" label="Song">{{sample}}</mat-tab>
   </mat-tab-group>
 </div> -->
 
 
 <mat-tab-group>
-  <mat-tab label="Let us pick"><br><h4>We will just generate lyrics for you. Click generate</h4></mat-tab>
+  <mat-tab label="Let us pick"><br><h4>Pick an artist from the list below and then click generate</h4>
+  <!-- <h1>hinhih</h1> -->
+  <ul class="list-group">
+     <li><input type="radio" class="radio-inline" name="artist-option">Kanye West</li>
+     <li><input type="radio" class="radio-inline" name="artist-option">The Beatles</li>
+     <li><input type="radio" class="radio-inline" name="artist-option">Adele</li>
+     <li><input type="radio" class="radio-inline" name="artist-option">Lady Gaga</li>
+  </ul>
+  <button class="button">Generate Lyrics</button>
+
+  </mat-tab>
   <mat-tab label="Enter your own lyrics">
     <br>
     <h4>Enter your own lyrics to generate on: </h4>

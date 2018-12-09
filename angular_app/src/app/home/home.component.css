@@ -11,43 +11,43 @@ body {
         display: inline-flex;
         flex-direction: column;
       }
-      
+
     .example-radio-button {
     margin: 5px;
     }
-    
+
     .example-selected-value {
     margin: 15px 0;
     }
 
-    
+
     .btn-group button {
-        background-color: #D7D6D6; 
-        border: 1px solid green; 
+        background-color: #D7D6D6;
+        border: 1px solid green;
         color: white;
-        padding: 10px 24px; 
+        padding: 10px 24px;
         cursor: pointer;
-        float: left; 
+        float: left;
          padding: 15px 735px;
     }
-    
+
     .btn-group:after {
         content: "";
         clear: both;
         display: table;
-        
+
     }
-    
+
     .btn-group button:not(:last-child) {
-        border-right: none; 
-        
+        border-right: none;
+
     }
-    
+
     .btn-group button:hover {
         background-color: red;
     }
-    
-    
+
+
     #GB{
     color: white;
     border-width: 2.5px;
@@ -64,3 +64,38 @@ body {
     height: 10%;
     text-align: center
 }
+
+.artist-list{
+text-decoration:none;
+color:#2a2b2d;
+font-size: 30px;
+}
+.radio-inline{
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    margin-right: 3px;
+}
+
+.button {
+  backface-visibility: hidden;
+position: relative;
+cursor: pointer;
+display: inline-block;
+white-space: nowrap;
+background: #337ab7;
+border-radius: 5px;
+border: 0px solid #444444;
+border-width: 0px 0px 0px 0px;
+padding: 10px 24px 10px 24px;
+  color: #ffffff;
+font-size: 16px;
+font-family: arial;
+font-weight: 100;
+font-style: normal
+}
+
+
+
