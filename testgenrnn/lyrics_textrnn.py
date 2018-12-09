@@ -13,7 +13,7 @@ def tiny_definition():
 
     train_cfg = {
         'line_delimited': False,   # set to True if each text has its own line in the source file
-        'num_epochs': 50,   # set higher to train the model for longer
+        'num_epochs': 70,   # set higher to train the model for longer
         'gen_epochs': 5,   # generates sample text from model after given number of epochs
         'train_size': 0.8,   # proportion of input data to train on: setting < 1.0 limits model from learning perfectly
         'dropout': 0.0,   # ignore a random proportion of source tokens each epoch, allowing model to generalize better
@@ -21,8 +21,8 @@ def tiny_definition():
         'is_csv': False   # set to True if file is a CSV exported from Excel/BigQuery/pandas
     }
 
-    file_name = "../lyrics_retrival/lyrics/kanye_songs.txt"
-    model_name = 'kanye'   # change to set file name of resulting trained models/texts
+    file_name = "../lyrics_retrival/lyrics/the_beatles_songs.txt"
+    model_name = 'the_beatles'   # change to set file name of resulting trained models/texts
     textgen = textgenrnn(name=model_name)
 
     train_function = textgen.train_from_file if train_cfg['line_delimited'] else textgen.train_from_largetext_file
