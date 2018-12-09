@@ -18,11 +18,20 @@
       background-color: #6e288e;
       border:none;
       font-family:  Tahoma;
-      color:#e8e7e7;
+      color:#d6d2d2;
       font-size: 28px;
       text-decoration: none;
       margin:auto;
       display:block;
+      background-image: -webkit-linear-gradient(top, #553B9A, #82278E);
+      background-image: -moz-linear-gradient(top, #553B9A, #82278E);
+      background-image: -ms-linear-gradient(top, #553B9A, #82278E);
+      background-image: -o-linear-gradient(top, #553B9A, #82278E);
+      background-image: linear-gradient(to bottom, rgb(108, 80, 185), #82278E);
+
+    }
+    .btn:hover{
+      color:#ffffff;
     }
 
 body{

@@ -80,7 +80,7 @@ font-size: 30px;
 }
 
 .button {
-  backface-visibility: hidden;
+backface-visibility: hidden;
 position: relative;
 cursor: pointer;
 display: inline-block;
