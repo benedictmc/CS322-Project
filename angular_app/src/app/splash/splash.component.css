@@ -11,21 +11,20 @@
       color: white;
     }
 
-    .btn {
-      position: absolute;
-      top: 80%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 400px;
-      padding: 30px;
-      background-color: rgba(186,186,186,0.5);
-      border: 1px solid gray;
+   .btn{
+      width: 275px;
+      height: 80px;
+      padding: 10px;
+      background-color: #6e288e;
+      border:none;
       font-family:  Tahoma;
-      color: black;
-      font-size: 27px;
-      padding: 19px;
+      color:#e8e7e7;
+      font-size: 28px;
       text-decoration: none;
+      margin:auto;
+      display:block;
     }
+
 body{
       background-color: coral;
 }
@@ -61,14 +60,6 @@ body{
   text-align: right;
   width: 20%;
   height: 100px;
-}
-
-
-.example-button-row button{
-  margin:auto;
-  display:block;
-  height: 100px;
-  width:350px;
 }
 .example-button-row a {
   margin-right: 8px;
