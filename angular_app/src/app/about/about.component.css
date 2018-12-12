@@ -1,0 +1,10 @@
+.card{
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+.about{
+    padding-top: 5%;
+    padding-bottom: 5%  
+
+}
