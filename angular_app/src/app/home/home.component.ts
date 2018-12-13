@@ -67,7 +67,8 @@ export class HomeComponent implements OnInit {
 
   getArtists (): Observable<any[]> {
     let url = 'http://localhost:5000/API/artists'
-    return this.http.get<any[]>(url)
+    let testUrl = 'https://obscure-basin-64790.herokuapp.com/API/artists'
+    return this.http.get<any[]>(testUrl)
       .pipe(
         tap(_ => _),
         catchError(this.handleError('getArtists', []))
