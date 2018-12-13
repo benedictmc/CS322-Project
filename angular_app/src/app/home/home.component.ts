@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { MatTabChangeEvent } from '@angular/material';
+import {Howl, Howler} from 'howler';
+
 
 @Component({
   selector: 'app-home',
@@ -106,5 +108,21 @@ export class HomeComponent implements OnInit {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+
+  playSound(){
+    console.log("Button Clicked!")
+
+    let sound1 = new Howl({
+      src: ['../../assets/sound/adele.mp3']
+    });
+    let sound2 = new Howl({
+      src: ['../../assets/sound/adele-background.mp3']
+    });
+      sound1.play()
+      sound2.volume(0.35)
+      sound2.play()
+
   }
 }

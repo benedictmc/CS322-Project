@@ -97,6 +97,24 @@ font-weight: 100;
 font-style: normal
 }
 
+#play{
+    backface-visibility: hidden;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    background: #337ab7;
+    border-radius: 5px;
+    border: 0px solid #444444;
+    border-width: 0px 0px 0px 0px;
+    padding: 10px 24px 10px 24px;
+      color: #ffffff;
+    font-size: 16px;
+    font-family: arial;
+    font-weight: 100;
+    font-style: normal
+    }
+
 
 .form-control{
   width:600px;
