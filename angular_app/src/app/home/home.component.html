@@ -1,99 +1,45 @@
 <!-- <body> -->
-<div class="border">
-<h2> Pick An Artist</h2>
-  <form>
-      <mat-radio-group>
-          <mat-radio-button class="example-radio-button" *ngFor="let artist of list" [value]="artist" (click)= "artistFocus = artist">
-              {{artist}}
-          </mat-radio-button>
-        </mat-radio-group>
-      <br>
-  </form>
-</div>
-<br>
-<br>
+    <div class="main">
+        <div class="artistschoice">
+          <h1>Pick an artist</h1>
+          <label><input type = "checkbox" name = "artists" value = "adele"><img src="https://i.pinimg.com/originals/c9/5f/af/c95fafd4aa964adb13589de2a3102741.jpg" class="artists"></label>
+          <label><input type = "checkbox" name = "artists" value = "kanye west"><img src="https://media.wmagazine.com/photos/57cf162f3c7545af0b0d6730/master/pass/1316.w.MS.royals.image3.jpg" class="artists"></label>
+          <label><input type = "checkbox" name = "artists" value = "the beatles"><img src="https://i.pinimg.com/originals/03/2f/d9/032fd9196ea52ca8046d2a259c0092fd.jpg" class="artists"></label>
+          <label><input type = "checkbox" name = "artists" value = "taylor swift"><img src="https://vignette.wikia.nocookie.net/taylor-swift/images/c/ca/CfKA1lZUsAEoIHM.jpg/revision/latest?cb=20180422123124" class="artists"></label>
 
-<!-- <div *ngIf="artistFocus == '';else artist_picked"><h4>Please pick an artist!</h4></div> -->
-<!--
-<div *ngIf="artistFocus == 'Kanye West'">
+        </div>
+        <br>
+        <div class="own_lyrics">
+          <h3>Copy and Paste your lyrics below and then click 'Generate Lyrics'</h3>
+          <br>
+          <textarea class="own_lyrics_input" rows="5"></textarea>
+        </div>
 
-  <mat-tab-group tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
-    <mat-tab *ngFor="let sample of kanyeSamples;" label="Song">{{sample}}</mat-tab>
-  </mat-tab-group>
-</div>
+        <div *ngIf="loaded == 'loading'">
+          <div class="progress">
+            <mat-spinner style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+          </div>
+        </div>
+        <br>
+        <br>
 
-<div *ngIf="artistFocus == 'The Beatles'">
-<mat-tab-group tabGroup (selectedTabChange)="tabChanged($event, artistFocus)">
-    <mat-tab *ngFor="let sample of beatlesSamples;" label="Song">{{sample}}</mat-tab>
-  </mat-tab-group>
-</div> -->
+        <!-- Generate Button -->
+        <div *ngIf="artistFocus != ''" style="text-align: center;">
+          <button class="button" mat-button color="primary" (click)="postLyrics()" (click)="results = true">Generate Lyrics</button>
+        </div>
+        <br>
+        <br>
+        <!-- Play Sound Button -->
+        <div>
+          <button class="playbutton" (click)="playSound()"> Play Sound</button>
+        </div>
+        <br>
+        <br>
+        <br>
 
+        <!-- </body> -->
 
-<mat-tab-group>
-  <mat-tab label="Let us pick"><br><h4>Pick an artist from the list below and then click 'Generate Lyrics'</h4>
-  <!-- <h1>hinhih</h1> -->
-  <ul class="list-group">
-     <li><input type="radio" class="radio-inline" name="artist-option">Kanye West</li>
-     <li><input type="radio" class="radio-inline" name="artist-option">The Beatles</li>
-     <li><input type="radio" class="radio-inline" name="artist-option">Adele</li>
-     <li><input type="radio" class="radio-inline" name="artist-option">Lady Gaga</li>
-  </ul>
-  <button class="button">Generate Lyrics</button>
-
-  </mat-tab>
-  <mat-tab label="Enter your own lyrics">
-    <!-- <br>
-    <h4>Enter your own lyrics to generate on: </h4>
-      <br>
-      <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Enter lyrics: " value="Its been a hard days night...">
-      </mat-form-field>
-    </form> -->
-<div class="form-group">
-        <h4 >Copy and Paste your lyrics below and then click 'Generate Lyrics'</h4>
-        <textarea class="form-control" rows="5"></textarea>
-</div>
-<button class="button">Generate Lyrics</button>
-  </mat-tab>
-</mat-tab-group>
-
-
-
-<div *ngIf="loaded == 'loading'">
-  <div class="progress">
-    <mat-spinner style="margin:0 auto;" mode="indeterminate"></mat-spinner>
-  </div>
-</div>
-<br>
-<br>
-
-<!-- Generate Button -->
-<div *ngIf="artistFocus != ''" style="text-align: center;">
-  <button mat-button color="primary" (click) = "postLyrics()"  (click)="results = true">Generate</button>
-</div>
-<br>
-<br>
-
-
-<!-- Play Sound Button -->
-<div >
-  <button class="button" (click) = "playSound()"> Play Sound</button>
-</div>
-<br>
-<br>
-
-
-<!-- </body> -->
-
-
-<div *ngIf="loaded == 'done'">
-  <h1>Results:</h1>
-  <h4>{{current_data}}</h4>
-</div>
-
-<!-- <h4>Angular application starts here: </h4>
-<h1>Here is the artist list: </h1>
-<li *ngFor="let item of list">
-  {{i}}{{item}} <span *ngIf="isFirst">default</span>
-</li> -->
+        <div *ngIf="loaded == 'done'">
+          <h1>Results:</h1>
+          <h4>{{current_data}}</h4>
+        </div>

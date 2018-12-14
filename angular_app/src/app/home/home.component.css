@@ -1,11 +1,15 @@
-body {
-    background-color: coral;
-    }
-    div.border {
-    border-style: solid;
-    border-width: 2.5px;
-     border-radius: 5px;
+  .artistschoice{
      text-align:center;
+     outline: none;
+     border-bottom: 1px solid #c0c0c0;
+
+    }
+    .own_lyrics{
+      text-align:center;
+    }
+    .own_lyrics_input{
+      position: center;
+      width: 600px;
     }
     .example-radio-group {
         display: inline-flex;
@@ -81,42 +85,72 @@ font-size: 30px;
 
 .button {
 backface-visibility: hidden;
-position: relative;
-cursor: pointer;
 display: inline-block;
-white-space: nowrap;
+cursor: pointer;
 background: #337ab7;
 border-radius: 5px;
 border: 0px solid #444444;
 border-width: 0px 0px 0px 0px;
 padding: 10px 24px 10px 24px;
-  color: #ffffff;
+color: #ffffff;
 font-size: 16px;
 font-family: arial;
 font-weight: 100;
-font-style: normal
+font-style: normal;
+position: absolute;
+left: 43%;
+
 }
 
-#play{
+.playbutton{
     backface-visibility: hidden;
-    position: relative;
+    position: absolute;
     cursor: pointer;
     display: inline-block;
-    white-space: nowrap;
     background: #337ab7;
     border-radius: 5px;
     border: 0px solid #444444;
     border-width: 0px 0px 0px 0px;
-    padding: 10px 24px 10px 24px;
+    padding: 12px 28px 12px 28px;
       color: #ffffff;
     font-size: 16px;
     font-family: arial;
     font-weight: 100;
-    font-style: normal
+    font-style: normal;
+    left:43%;
     }
 
 
 .form-control{
   width:600px;
 
+}
+
+.artists{
+display: inline-block;
+width: 280px;
+height: 280px;
+padding:15px;
+}
+/* HIDE RADIO */
+[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type=checkbox]:checked + img {
+  outline: 4px solid #8e2da1;
+}
+
+[type=radio] + img {
+  cursor: pointer;
+}
+
+.main{
+  padding-left:100px;
+  padding-right: 100px;
+  outline: none;
+  border:0px;
 }
