@@ -10,6 +10,4 @@ class AppDriver():
         return artist_list
     
     def predict_lyrics(self, artist, sample):
-        
-        # print(generate.generate())
-        return generate.generate()
+        return generate.generate(artist)

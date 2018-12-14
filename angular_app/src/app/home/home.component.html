@@ -3,8 +3,9 @@
 <h2> Pick An Artist</h2>
   <form>
       <mat-radio-group>
-          <mat-radio-button class="example-radio-button" *ngFor="let artist of list" [value]="artist" (click)= "artistFocus = artist">
+          <mat-radio-button class="example-radio-button" *ngFor="let artist of list" [value]="artist" (click)= "artistFocus = artist" (click)= "loaded = ''">
               {{artist}}
+              <mat-radio-button  [value]="yo" (click)= "artistFocus = yo" >yo</mat-radio-button>
           </mat-radio-button>
         </mat-radio-group>
       <br>
@@ -12,6 +13,9 @@
 </div>
 <br>
 <br>
+<mat-radio-group>
+      <mat-radio-button  [value]="yo" (click)= "artistFocus = yo" >yo</mat-radio-button>
+</mat-radio-group>
 
 <!-- <div *ngIf="artistFocus == '';else artist_picked"><h4>Please pick an artist!</h4></div> -->
 <!--
@@ -29,34 +33,22 @@
 </div> -->
 
 
-<mat-tab-group>
+<!-- <mat-tab-group>
   <mat-tab label="Let us pick"><br><h4>Pick an artist from the list below and then click 'Generate Lyrics'</h4>
-  <!-- <h1>hinhih</h1> -->
   <ul class="list-group">
      <li><input type="radio" class="radio-inline" name="artist-option">Kanye West</li>
      <li><input type="radio" class="radio-inline" name="artist-option">The Beatles</li>
      <li><input type="radio" class="radio-inline" name="artist-option">Adele</li>
      <li><input type="radio" class="radio-inline" name="artist-option">Lady Gaga</li>
   </ul>
-  <button class="button">Generate Lyrics</button>
-
   </mat-tab>
   <mat-tab label="Enter your own lyrics">
-    <!-- <br>
-    <h4>Enter your own lyrics to generate on: </h4>
-      <br>
-      <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Enter lyrics: " value="Its been a hard days night...">
-      </mat-form-field>
-    </form> -->
-<div class="form-group">
-        <h4 >Copy and Paste your lyrics below and then click 'Generate Lyrics'</h4>
-        <textarea class="form-control" rows="5"></textarea>
-</div>
-<button class="button">Generate Lyrics</button>
+    <div class="form-group">
+            <h4 >Copy and Paste your lyrics below and then click 'Generate Lyrics'</h4>
+            <textarea class="form-control" rows="5"></textarea>
+    </div>
   </mat-tab>
-</mat-tab-group>
+</mat-tab-group> -->
 
 
 
@@ -65,25 +57,37 @@
     <mat-spinner style="margin:0 auto;" mode="indeterminate"></mat-spinner>
   </div>
 </div>
+<hr/>
+
 <br>
 <br>
 
 <!-- Generate Button -->
-<div *ngIf="artistFocus != ''" style="text-align: center;">
-  <button mat-button color="primary" (click) = "postLyrics()"  (click)="results = true">Generate</button>
+<div *ngIf="artistFocus != '' && loaded == ''" style="text-align: center;">
+  <button (click) = "postLyricsLocal()"  (click)="results = true" class="button">Generate Lyrics</button>
 </div>
 <br>
 <br>
 <!-- </body> -->
 
-
-<div *ngIf="loaded == 'done'">
-  <h1>Results:</h1>
-  <h4>{{current_data}}</h4>
+<div *ngIf="lyricError">
+  <h4>An error has occured</h4>
 </div>
 
+<div *ngIf="loaded == 'done' && !lyricError">
+  <h1>Results:</h1>
+
+  <button class="button" (click) = "loaded == ''" >Try Again</button>
+</div>
+
+
+<pre ngx-auto-scroll lock-y-offset="10" observe-attributes>
+    {{current_data}}
+</pre>
 <!-- <h4>Angular application starts here: </h4>
 <h1>Here is the artist list: </h1>
 <li *ngFor="let item of list">
   {{i}}{{item}} <span *ngIf="isFirst">default</span>
 </li> -->
+<hr/>
+
