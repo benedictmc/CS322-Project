@@ -1,9 +1,9 @@
-import { Component, OnInit,AfterViewInit, ViewChild } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit,AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { MatTabChangeEvent } from '@angular/material';
+import {NgxAutoScrollModule} from "ngx-auto-scroll";
 import {Howl, Howler} from 'howler';
 
 
@@ -19,16 +19,12 @@ export class HomeComponent implements OnInit {
   results: Boolean = false
   artistFocus: string = ''
   sampleFocus: string = ''
-  kanyeSamples: Array<string> = ["I feel blessed Way up, I feel blessed nWay up, I feel blessed", 
-  "I hate the new Kanye, the bad mood Kanye The always rude Kanye, spaz in the news Kanye",
-  "When was the last time I remembered a birthday? When was the last time I wasn't in a hurry?"]
-  beatlesSamples: Array<string> = ["It Won't Be Long,All I've Got To Do,All My Loving,Don't Bother Me",
-  "Within You Without You,When I'm Sixty Four,Lovely Rita",
-  "You Know What To Do,No Reply, Mr. Moonlight,Leave My Kitten Alone,Eight Days A Week"]
+  lyricError: Boolean = false
   loaded: string = '';
   current_data: string;
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private scroll: NgxAutoScrollModule) { }
   
   ngOnInit() {
     this.map.set("Kanye West", "this.kanyeSamples");
@@ -39,6 +35,9 @@ export class HomeComponent implements OnInit {
       console.log(this.list)      
     })
   }
+  ngAfterViewInit(){
+  }
+
 
   // TODO Need to finish this method
   postLyrics() {
@@ -46,10 +45,7 @@ export class HomeComponent implements OnInit {
     let sample = this.sampleFocus
     let artist = this.artistFocus
     console.log('Generate button clicked with artist and sample', this.sampleFocus, sample)
-    // {
-    //   "artist" : artist,
-    //   "sample" : sample
-    // }
+
     let url = 'http://localhost:5000/API/post-artists'
     this.http.post('http://localhost:5000/API/post-artists', {
         "artist" : artist,
@@ -58,23 +54,37 @@ export class HomeComponent implements OnInit {
       data => {
           console.log("POST Request is successful ", data);
           this.current_data = data['result']
+          console.log(this.current_data);
           this.loaded = 'done'
       },
       error => {
           console.log("Error", error);
+          this.loaded = 'done'
+          this.lyricError = true;
       }
     );     
     console.log("Posting lyrics....")
   }
 
+  postLyricsLocal(){
+    console.log("postLyricsLocal")
+    this.current_data ="haaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\n\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\n\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\n\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n" 
+    setTimeout(function () {
+      window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+    }, 10);
+  
+  }
+
   getArtists (): Observable<any[]> {
     let url = 'http://localhost:5000/API/artists'
+    let testUrl = 'https://obscure-basin-64790.herokuapp.com/API/artists'
     return this.http.get<any[]>(url)
       .pipe(
         tap(_ => _),
         catchError(this.handleError('getArtists', []))
       );
   }
+
   tabChanged = (tabChangeEvent: MatTabChangeEvent, artistFocus: string): void => {
     let arrayName = eval(this.map.get(artistFocus));  
     console.log('index => ', tabChangeEvent.index);
@@ -98,14 +108,8 @@ export class HomeComponent implements OnInit {
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-   
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-   
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-   
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }

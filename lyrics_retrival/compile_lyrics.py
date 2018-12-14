@@ -11,7 +11,6 @@ class CompileLyrics():
 
         for song_key in list(self.data):
             song = self.data[song_key]
-            print(song)
             # line_list = song.split('\n')
             # remove_tag = [line for line in line_list if '[' not in line]
             # remove_empty = [line for line in remove_tag if '' != line]
@@ -24,4 +23,3 @@ class CompileLyrics():
         text_file.close()
         print(f'Finished.')
 
-x = CompileLyrics('meta/the_beatles_songs.json', 'the_beatles')

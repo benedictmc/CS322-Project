@@ -68,7 +68,11 @@
     height: 10%;
     text-align: center
 }
-
+pre{ 
+    font-family: "courier new", courier, monospace;
+    font-size: 15px;
+    text-align: center;
+}
 .artist-list{
 text-decoration:none;
 color:#2a2b2d;
