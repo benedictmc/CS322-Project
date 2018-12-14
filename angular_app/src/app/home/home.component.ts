@@ -4,6 +4,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { MatTabChangeEvent } from '@angular/material';
 import {NgxAutoScrollModule} from "ngx-auto-scroll";
+import {Howl, Howler} from 'howler';
+
 
 @Component({
   selector: 'app-home',
@@ -110,5 +112,21 @@ export class HomeComponent implements OnInit {
       this.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
+  }
+
+
+  playSound(){
+    console.log("Button Clicked!")
+
+    let sound1 = new Howl({
+      src: ['../../assets/sound/adele.mp3']
+    });
+    let sound2 = new Howl({
+      src: ['../../assets/sound/adele-background.mp3']
+    });
+      sound1.play()
+      sound2.volume(0.35)
+      sound2.play()
+
   }
 }
