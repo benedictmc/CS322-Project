@@ -5,7 +5,12 @@
 
     }
     .own_lyrics{
-      text-align:center;
+      display:                 flex;
+      display:                 -webkit-flex; /* Safari 8 */
+      flex-wrap:               wrap;
+      -webkit-flex-wrap:       wrap;         /* Safari 8 */
+      justify-content:         center;
+      -webkit-justify-content: center;   
     }
     .own_lyrics_input{
       position: center;
@@ -23,27 +28,22 @@
     .example-selected-value {
     margin: 15px 0;
     }
+    .button{
+
+    }
 
 
     .btn-group button {
-        background-color: #D7D6D6;
-        border: 1px solid green;
-        color: white;
-        padding: 10px 24px;
-        cursor: pointer;
-        float: left;
-         padding: 15px 735px;
+
     }
 
     .btn-group:after {
-        content: "";
-        clear: both;
-        display: table;
+
 
     }
 
     .btn-group button:not(:last-child) {
-        border-right: none;
+        
 
     }
 
@@ -53,11 +53,7 @@
 
 
     #GB{
-    color: white;
-    border-width: 2.5px;
-     border-radius: 5px;
-     text-align:center;
-     padding: 15px 720px;
+
     }
     #text{
      padding: 15px 660px;
@@ -88,21 +84,21 @@ font-size: 30px;
 }
 
 .button {
-backface-visibility: hidden;
-display: inline-block;
-cursor: pointer;
-background: #337ab7;
-border-radius: 5px;
-border: 0px solid #444444;
-border-width: 0px 0px 0px 0px;
-padding: 10px 24px 10px 24px;
-color: #ffffff;
-font-size: 16px;
-font-family: arial;
-font-weight: 100;
-font-style: normal;
-position: absolute;
-left: 43%;
+    backface-visibility: hidden;
+    display: inline-block;
+    cursor: pointer;
+    background: #337ab7;
+    border-radius: 5px;
+    border: 0px solid #444444;
+    border-width: 0px 0px 0px 0px;
+    padding: 10px 24px 10px 24px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: arial;
+    font-weight: 100;
+    font-style: normal;
+    position: absolute;
+    left: 45%;
 
 }
 

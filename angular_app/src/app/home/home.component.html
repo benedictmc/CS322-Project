@@ -1,57 +1,48 @@
-<!-- <body> -->
-    <div class="main">
-        <div class="artistschoice">
-          <h1>Pick an artist</h1>
-          <label><input type = "checkbox" name = "artists" value = "adele"><img src="https://i.pinimg.com/originals/c9/5f/af/c95fafd4aa964adb13589de2a3102741.jpg" class="artists"></label>
-          <label><input type = "checkbox" name = "artists" value = "kanye west"><img src="https://media.wmagazine.com/photos/57cf162f3c7545af0b0d6730/master/pass/1316.w.MS.royals.image3.jpg" class="artists"></label>
-          <label><input type = "checkbox" name = "artists" value = "the beatles"><img src="https://i.pinimg.com/originals/03/2f/d9/032fd9196ea52ca8046d2a259c0092fd.jpg" class="artists"></label>
-          <label><input type = "checkbox" name = "artists" value = "taylor swift"><img src="https://vignette.wikia.nocookie.net/taylor-swift/images/c/ca/CfKA1lZUsAEoIHM.jpg/revision/latest?cb=20180422123124" class="artists"></label>
+<div *ngIf = "list">
+  <div class="artistschoice">
+    <h1><b>Pick an artist</b></h1>
+    <label><input type = "radio" name = "artists"  value = "Arctic Monkeys" (click)= "changeArtist('Arctic Monkeys', $event)"><img src="https://i.pinimg.com/originals/c9/5f/af/c95fafd4aa964adb13589de2a3102741.jpg" class="artists"></label>
+    <label><input type = "radio" name = "artists"  value = "kanye west" (click)= "changeArtist('Kanye West', $event)"><img src="https://media.wmagazine.com/photos/57cf162f3c7545af0b0d6730/master/pass/1316.w.MS.royals.image3.jpg" class="artists"></label>
+    <label><input type = "radio" name = "artists"  value = "the beatles" (click)= "changeArtist('The Beatles', $event)"><img src="https://i.pinimg.com/originals/03/2f/d9/032fd9196ea52ca8046d2a259c0092fd.jpg" class="artists"></label>
+    <label><input type = "radio" name = "artists"  value = "taylor swift" (click)= "changeArtist('Taylor Swift', $event, kanye)"><img src="https://vignette.wikia.nocookie.net/taylor-swift/images/c/ca/CfKA1lZUsAEoIHM.jpg/revision/latest?cb=20180422123124" class="artists"></label>
+  </div>
+  <br>
 
-        </div>
-        <br>
-        <div class="own_lyrics">
-          <h3>Copy and Paste your lyrics below and then click 'Generate Lyrics'</h3>
-          <br>
-          <textarea class="own_lyrics_input" rows="5"></textarea>
-        </div>
+  <div class="own_lyrics">
+    <h3>Create lyrics for your selected artist <b>{{artistFocus}}</b></h3>
+    <br>
+  </div>
 
-        <div *ngIf="loaded == 'loading'">
-          <div class="progress">
-            <mat-spinner style="margin:0 auto;" mode="indeterminate"></mat-spinner>
-          </div>
-        </div>
-        <br>
-        <br>
+  <div *ngIf="loaded == 'loading'">
+    <div class="progress">
+      <mat-spinner style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+    </div>
+  </div>
+  <br>
 
-        <!-- Generate Button -->
-        <div *ngIf="artistFocus != ''" style="text-align: center;">
-          <button class="button" mat-button color="primary" (click)="postLyrics()" (click)="results = true">Generate Lyrics</button>
-        </div>
-        <br>
-        <br>
-        <!-- Play Sound Button -->
-        <div>
-          <button class="playbutton" (click)="playSound()"> Play Sound</button>
-        </div>
-        <br>
-        <br>
-        <br>
+  <!-- Generate Button -->
+  <div *ngIf="artistFocus != ''" >
+    <button class="button" mat-button color="primary" (click)="postLyrics()" (click)="results = true">Generate Lyrics</button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
 
-        <!-- </body> -->
-
-        <div *ngIf="loaded == 'done'">
-          <h1>Results:</h1>
-          <h4>{{current_data}}</h4>
-        </div>
-
-
-
-<pre ngx-auto-scroll lock-y-offset="10" observe-attributes>
-    {{current_data}}
-</pre>
-<!-- <h4>Angular application starts here: </h4>
-<h1>Here is the artist list: </h1>
-<li *ngFor="let item of list">
-  {{i}}{{item}} <span *ngIf="isFirst">default</span>
-</li> -->
-<hr/>
+  <!-- Play Sound Button -->
+  <!-- <div>
+    <button class="playbutton" (click)="playSound()"> Play Sound</button>
+  </div> -->
+  <div *ngIf = "loaded == 'done'"><h3>The results for <b>{{artistFocus}}</b> are as follows:</h3></div>
+  <div *ngIf = "lyricError" ><h4>Appologies an Error has occured. Please try again</h4></div>
+  <pre>
+      {{current_data}}
+  </pre>
+  <br>
+  <div *ngIf = "loaded == 'done'" >
+      <button class="button" mat-button color="primary" (click)="current_data = '' " (click)="loaded = ''">Try Again</button>
+  </div>
+  <br>
+  <br>
+  <hr/>
+</div>

@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   loaded: string = '';
   current_data: string;
 
-
   constructor(private http: HttpClient, private scroll: NgxAutoScrollModule) { }
   
   ngOnInit() {
@@ -32,15 +31,17 @@ export class HomeComponent implements OnInit {
     console.log("Loading page...")
     this.getArtists().subscribe(data=>{
       this.list = data
-      console.log(this.list)      
     })
   }
   ngAfterViewInit(){
   }
 
+  changeArtist(artist, event, kanye){
+    this.artistFocus = artist
+  }
 
-  // TODO Need to finish this method
   postLyrics() {
+    this.current_data = " "
     this.loaded = 'loading'
     let sample = this.sampleFocus
     let artist = this.artistFocus
@@ -54,6 +55,9 @@ export class HomeComponent implements OnInit {
       data => {
           console.log("POST Request is successful ", data);
           this.current_data = data['result']
+          setTimeout(function () {
+            window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+          }, 10);
           console.log(this.current_data);
           this.loaded = 'done'
       },
@@ -66,35 +70,9 @@ export class HomeComponent implements OnInit {
     console.log("Posting lyrics....")
   }
 
-  postLyricsLocal(){
-    console.log("postLyricsLocal")
-    this.current_data ="haaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\n\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\n\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n\n\n\nhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n" 
-    setTimeout(function () {
-      window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
-    }, 10);
-  
-  }
-
   getArtists (): Observable<any[]> {
     let url = 'http://localhost:5000/API/artists'
     let testUrl = 'https://obscure-basin-64790.herokuapp.com/API/artists'
-    return this.http.get<any[]>(url)
-      .pipe(
-        tap(_ => _),
-        catchError(this.handleError('getArtists', []))
-      );
-  }
-
-  tabChanged = (tabChangeEvent: MatTabChangeEvent, artistFocus: string): void => {
-    let arrayName = eval(this.map.get(artistFocus));  
-    console.log('index => ', tabChangeEvent.index);
-    console.log('artist => ', artistFocus);
-    console.log('text => ', arrayName[tabChangeEvent.index]);
-    this.sampleFocus = arrayName[tabChangeEvent.index]
-  }
-
-  getSamples (id): Observable<any[]> {
-    let url = 'http://localhost:5000/API/samples/'+id
     return this.http.get<any[]>(url)
       .pipe(
         tap(_ => _),

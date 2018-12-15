@@ -3,7 +3,9 @@ from keras import backend as K
 
 artist_map = {
     "Kanye West" : "kanye",
-    "The Beatles" : "the_beatles"
+    "The Beatles" : "the_beatles",
+    "Arctic Monkeys" : "arctic_monkeys",
+    "Taylor Swift" : "taylor_swift"
 }
 
 def generate(artist):
@@ -18,9 +20,5 @@ def generate(artist):
 
     with open('textgenrnn_texts.txt', 'r') as f:
        data['result'] = f.read()
-    
-    print(data['result'])
     K.clear_session()
     return data
-
-generate("The Beatles")

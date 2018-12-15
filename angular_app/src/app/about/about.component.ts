@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import {Howl, Howler} from 'howler';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-about',
@@ -8,11 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
+
+  openSnack(){
+    
+    this.snackBar.open("<INSERT LINK HERE>", 'Share', {
+      duration: 5000,
+    });
+
+  }
   // playSound(){
   //   console.log("Button Clicked!")
 

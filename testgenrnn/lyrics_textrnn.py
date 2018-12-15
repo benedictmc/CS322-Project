@@ -47,4 +47,4 @@ def tiny_definition(artist):
 
 
 
-tiny_definition('kanye_west')
+tiny_definition('taylor_swift')
