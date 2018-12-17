@@ -11,6 +11,7 @@ import { NavComponent } from './nav/nav.component';
 import { SplashComponent } from './splash/splash.component';
 import { AboutComponent } from './about/about.component';
 import { ParallaxModule, ParallaxConfig } from 'ngx-parallax';
+import {NgxAutoScrollModule} from "ngx-auto-scroll";
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     GoogleModule,
+    NgxAutoScrollModule,
     AppRoutingModule,
     RouterModule.forRoot(
       appRoutes

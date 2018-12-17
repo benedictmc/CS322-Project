@@ -11,10 +11,10 @@ class CompileLyrics():
 
         for song_key in list(self.data):
             song = self.data[song_key]
-            line_list = song.split('\n')
-            remove_tag = [line for line in line_list if '[' not in line]
-            remove_empty = [line for line in remove_tag if '' != line]
-            song_list.append(' '.join(remove_empty))
+            # line_list = song.split('\n')
+            # remove_tag = [line for line in line_list if '[' not in line]
+            # remove_empty = [line for line in remove_tag if '' != line]
+            song_list.append(song)
         print(f'Done now saving to {filename} ...')
 
         artist = artist.replace(' ', '_')

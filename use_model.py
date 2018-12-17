@@ -1,19 +1,24 @@
 from textgenrnn import textgenrnn
 from keras import backend as K
+
+artist_map = {
+    "Kanye West" : "kanye",
+    "The Beatles" : "the_beatles",
+    "Arctic Monkeys" : "arctic_monkeys",
+    "Taylor Swift" : "taylor_swift"
+}
+
 def generate(artist):
-    result = {}
-    textgen = textgenrnn(weights_path=f'models/genrnn/{artist}_weights.hdf5',
-                        vocab_path=f'models/genrnn/{artist}_vocab.json',
-                        config_path=f'models/genrnn/{artist}_config.json')
+    data = {}
+    artist = artist_map[artist]
+    print("*******************")
+    textgen = textgenrnn(weights_path=f'models/genrnn/{artist}/{artist}_weights.hdf5',
+                        vocab_path=f'models/genrnn/{artist}/{artist}_vocab.json',
+                        config_path=f'models/genrnn/{artist}/{artist}_config.json')
 
     textgen.generate_to_file('textgenrnn_texts.txt', max_gen_length=1000)
 
     with open('textgenrnn_texts.txt', 'r') as f:
-        result['result'] = f.read()
-    print(result)
+       data['result'] = f.read()
     K.clear_session()
-    
-    return result
-
-
-generate('kanye')
+    return data

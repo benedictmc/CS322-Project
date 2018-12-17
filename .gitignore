@@ -1,3 +1,4 @@
 __pycache__/
-models/
 node_modules/
+hosting/
+text_to_speech/
