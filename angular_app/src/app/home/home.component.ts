@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   loaded: string = '';
   current_data: string;
   ipUrl = "https://obscure-basin-64790.herokuapp.com/"
+  fin_artist: string = ''
   constructor(public http: HttpClient, private scroll: NgxAutoScrollModule) { }
   
   ngOnInit() {
@@ -34,10 +35,6 @@ export class HomeComponent implements OnInit {
     })
   }
   ngAfterViewInit(){
-  }
-
-  changeArtist(artist, event, kanye){
-    this.artistFocus = artist
   }
 
   changeArtist(artist, event, kanye){
@@ -68,7 +65,7 @@ export class HomeComponent implements OnInit {
           }, 10);
           console.log("Request made");
 
-          
+      this.fin_artist = artist
       },
       error => {
           console.log("Error", error);
@@ -81,10 +78,9 @@ export class HomeComponent implements OnInit {
 
   queryRequest(requestId){
     let url = this.ipUrl+'API/check-status?id='+requestId
-    let amount = 60
     console.log("called get request", url)
     const source = interval(2000);
-    const timer$ = timer(100000); 
+    const timer$ = timer(200000); 
     const example = source.pipe(takeUntil(timer$));
     const subscribe = example.subscribe(val => {
       this.http.get(url).subscribe(data =>{
@@ -99,8 +95,9 @@ export class HomeComponent implements OnInit {
           subscribe.unsubscribe()
         }
       })
-    }
+    })
   }
+
 
   getArtists (): Observable<any[]> {
     let url = this.ipUrl+'API/artists'
