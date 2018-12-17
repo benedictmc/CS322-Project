@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import {NgxAutoScrollModule} from "ngx-auto-scroll";
 import {Howl, Howler} from 'howler';
-
 import { Observable, Subject, ReplaySubject, from, of, range } from 'rxjs';
-
 import { interval, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -25,7 +23,6 @@ export class HomeComponent implements OnInit {
   loaded: string = '';
   current_data: string;
   ipUrl = "https://obscure-basin-64790.herokuapp.com/"
-
   constructor(public http: HttpClient, private scroll: NgxAutoScrollModule) { }
   
   ngOnInit() {
@@ -36,10 +33,17 @@ export class HomeComponent implements OnInit {
       this.list = data
     })
   }
+  ngAfterViewInit(){
+  }
 
   changeArtist(artist, event, kanye){
     this.artistFocus = artist
   }
+
+  changeArtist(artist, event, kanye){
+    this.artistFocus = artist
+  }
+
 
   postLyrics() {
     this.current_data = " "
@@ -47,6 +51,7 @@ export class HomeComponent implements OnInit {
     let sample = this.sampleFocus
     let artist = this.artistFocus
     console.log('Generate button clicked with artist and sample', this.sampleFocus, sample)
+
 
     let url = this.ipUrl+ 'API/post-artists'
     this.http.post(url, {
@@ -95,43 +100,6 @@ export class HomeComponent implements OnInit {
         }
       })
     }
-
-
-    // interval(2000).takeUntil(false).subscribe((j)=>{
-    //   console.info('j: '+ j++);
-    //   this.http.get(url).subscribe(data =>{
-    //     if(data == 'not_done'){
-    //       console.log("Not done")
-    //     }
-    //     else{
-    //       data['result'] = this.current_data
-    //     }
-    //   })
-    //   amount --
-    //   console.log(amount)
-    // })
-
-
-    // while(amount > 1){
-    //   interval(1000).subscribe((j)=>{
-    //     console.info('j: '+ j++);
-    //     this.http.get(url).subscribe(data =>{
-    //       console.log(data)
-    //     })
-    //     amount --
-    //   })
-    // }
-    // while(amount > 1){
-    //   console.log("In while ", amount)
-    //   setTimeout(function(){
-    //     console.log("Calling timeout ")
-
-    //     this.http.get(url).subscribe(data =>{
-    //       console.log(data)
-    //     })
-    //   }, 200);
-    //   amount --;
-    // }
   }
 
   getArtists (): Observable<any[]> {
