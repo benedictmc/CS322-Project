@@ -10,7 +10,8 @@
       flex-wrap:               wrap;
       -webkit-flex-wrap:       wrap;         /* Safari 8 */
       justify-content:         center;
-      -webkit-justify-content: center;
+      -webkit-justify-content: center;  
+
     }
     .own_lyrics_input{
       position: center;
@@ -43,8 +44,6 @@
     }
 
     .btn-group button:not(:last-child) {
-
-
     }
 
     .btn-group button:hover {
@@ -133,6 +132,7 @@ height: 280px;
 padding:15px;
 }
 /* HIDE RADIO */
+
 [type=radio] {
   position: absolute;
   opacity: 0;

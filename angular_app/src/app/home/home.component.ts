@@ -1,11 +1,11 @@
 import { Component, OnInit,AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { MatTabChangeEvent } from '@angular/material';
 import {NgxAutoScrollModule} from "ngx-auto-scroll";
 import {Howl, Howler} from 'howler';
-
+import { Observable, Subject, ReplaySubject, from, of, range } from 'rxjs';
+import { interval, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
   lyricError: Boolean = false
   loaded: string = '';
   current_data: string;
-
-  constructor(private http: HttpClient, private scroll: NgxAutoScrollModule) { }
+  ipUrl = "https://obscure-basin-64790.herokuapp.com/"
+  constructor(public http: HttpClient, private scroll: NgxAutoScrollModule) { }
   
   ngOnInit() {
     this.map.set("Kanye West", "this.kanyeSamples");
@@ -40,6 +40,11 @@ export class HomeComponent implements OnInit {
     this.artistFocus = artist
   }
 
+  changeArtist(artist, event, kanye){
+    this.artistFocus = artist
+  }
+
+
   postLyrics() {
     this.current_data = " "
     this.loaded = 'loading'
@@ -47,19 +52,23 @@ export class HomeComponent implements OnInit {
     let artist = this.artistFocus
     console.log('Generate button clicked with artist and sample', this.sampleFocus, sample)
 
-    let url = 'http://localhost:5000/API/post-artists'
-    this.http.post('http://localhost:5000/API/post-artists', {
+
+    let url = this.ipUrl+ 'API/post-artists'
+    this.http.post(url, {
         "artist" : artist,
         "sample" : sample
       }).subscribe(
       data => {
           console.log("POST Request is successful ", data);
-          this.current_data = data['result']
+          // this.current_data = data['result']
+          let requestId = data['id']
+          this.queryRequest(requestId)
           setTimeout(function () {
             window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
           }, 10);
-          console.log(this.current_data);
-          this.loaded = 'done'
+          console.log("Request made");
+
+          
       },
       error => {
           console.log("Error", error);
@@ -70,9 +79,31 @@ export class HomeComponent implements OnInit {
     console.log("Posting lyrics....")
   }
 
+  queryRequest(requestId){
+    let url = this.ipUrl+'API/check-status?id='+requestId
+    let amount = 60
+    console.log("called get request", url)
+    const source = interval(2000);
+    const timer$ = timer(100000); 
+    const example = source.pipe(takeUntil(timer$));
+    const subscribe = example.subscribe(val => {
+      this.http.get(url).subscribe(data =>{
+        if(data == 'not_done'){
+          console.log("Not done")
+        }
+        else{
+          console.log("Done!!")
+          console.log(data['result'])
+          this.loaded = "done"
+          this.current_data = data['result']
+          subscribe.unsubscribe()
+        }
+      })
+    }
+  }
+
   getArtists (): Observable<any[]> {
-    let url = 'http://localhost:5000/API/artists'
-    let testUrl = 'https://obscure-basin-64790.herokuapp.com/API/artists'
+    let url = this.ipUrl+'API/artists'
     return this.http.get<any[]>(url)
       .pipe(
         tap(_ => _),

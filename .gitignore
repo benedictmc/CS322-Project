@@ -1,2 +1,5 @@
 __pycache__/
 node_modules/
+hosting/
+text_to_speech/
+
