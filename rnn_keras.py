@@ -89,6 +89,8 @@ class Predict_Lyrics():
         model.add(Dropout(0.2))
         model.add(CuDNNLSTM(265, return_sequences=False))
         model.add(Dropout(0.2))
+        CuDNNLSTM()
+
         ## A Dence layer to pad out by amount_unquie_chars
         model.add(Dense(len(self.unquie_tokens)))
         ## An activation softmax layer 

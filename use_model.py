@@ -1,5 +1,6 @@
 from textgenrnn import textgenrnn
 from keras import backend as K
+import json
 
 artist_map = {
     "Kanye West" : "kanye",
@@ -22,3 +23,16 @@ def generate(artist):
        data['result'] = f.read()
     K.clear_session()
     return data
+
+
+print('Starting generating samples...')
+generate_list = ['Kanye West', "The Beatles", "Arctic Monkeys", "Taylor Swift"]
+for artist in generate_list:
+    print(f'Generating samples for {artist}...')
+    sample_dict = {artist: []}
+    for i in range(10):
+        sample_dict[artist].append(generate(artist))
+    with open(f'sample_folder/{artist}.json', 'w') as f:
+        json.dump(sample_dict, f)
+    print(f'Done for {artist}...')
+    
